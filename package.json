@@ -1,0 +1,19 @@
+{
+  "name": "youtube",
+  "version": "1.0.0",
+  "description": "frontend, backend, javascript",
+  "keywords": [
+    "frontend",
+    "backend",
+    "javascript",
+    "and",
+    "more"
+  ],
+  "license": "ISC",
+  "author": "vivek raj srivastava",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run start"
+  }
+}
