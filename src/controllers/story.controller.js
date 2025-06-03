@@ -1,5 +1,5 @@
 import mongoose, {isValidObjectId} from "mongoose"
-import {Video} from "../models/video.model.js"
+import {Story} from "../models/Story.model.js"
 import {User} from "../models/user.model.js"
 import {ApiError} from "../utils/ApiError.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
@@ -7,41 +7,41 @@ import {asyncHandler} from "../utils/asyncHandler.js"
 import {uploadOnCloudinary} from "../utils/cloudinary.js"
 
 
-const getAllVideos = asyncHandler(async (req, res) => {
+const getAllStory = asyncHandler(async (req, res) => {
     const { page = 1, limit = 10, query, sortBy, sortType, userId } = req.query
-    //TODO: get all videos based on query, sort, pagination
+    //TODO: get all Story based on query, sort, pagination
 })
 
-const publishAVideo = asyncHandler(async (req, res) => {
+const publishAStory = asyncHandler(async (req, res) => {
     const { title, description} = req.body
-    // TODO: get video, upload to cloudinary, create video
+    // TODO: get Story, upload to cloudinary, create Story
 })
 
-const getVideoById = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
-    //TODO: get video by id
+const getStoryById = asyncHandler(async (req, res) => {
+    const { StoryId } = req.params
+    //TODO: get Story by id
 })
 
-const updateVideo = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
-    //TODO: update video details like title, description, thumbnail
+const updateStory = asyncHandler(async (req, res) => {
+    const { StoryId } = req.params
+    //TODO: update Story details like title, description, thumbnail
 
 })
 
-const deleteVideo = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
-    //TODO: delete video
+const deleteStory = asyncHandler(async (req, res) => {
+    const { StoryId } = req.params
+    //TODO: delete Story
 })
 
 const togglePublishStatus = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
+    const { StoryId } = req.params
 })
 
 export {
-    getAllVideos,
-    publishAVideo,
-    getVideoById,
-    updateVideo,
-    deleteVideo,
+    getAllStory,
+    publishAStory,
+    getStoryById,
+    updateStory,
+    deleteStory,
     togglePublishStatus
 }

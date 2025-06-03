@@ -1,6 +1,6 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import {ApiError} from "../utils/ApiError.js"
-import { User} from "../models/user.model.js"
+import {User} from "../models/user.models.js"
 import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken"
@@ -24,7 +24,7 @@ const generateAccessAndRefereshTokens = async(userId) =>{
     }
 }
 
-const registerUser = asyncHandler( async (req, res) => {
+export const registerUser = asyncHandler( async (req, res) => {
     // get user details from frontend
     // validation - not empty
     // check if user already exists: username, email
@@ -132,7 +132,7 @@ const loginUser = asyncHandler(async (req, res) =>{
    if (!isPasswordValid) {
     throw new ApiError(401, "Invalid user credentials")
     }
-
+    console.log(user)
    const {accessToken, refreshToken} = await generateAccessAndRefereshTokens(user._id)
 
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
@@ -157,7 +157,17 @@ const loginUser = asyncHandler(async (req, res) =>{
     )
 
 })
-
+const getAllUsers = asyncHandler(async(req,res)=>{
+   try {
+    const users = await User.find();
+    if(!users){
+        res.status(404).json({error : "No Users Found"});
+    }
+    res.json(users);
+   } catch (err) {
+    res.status(404).json({error:err})
+   }
+})
 const logoutUser = asyncHandler(async(req, res) => {
     await User.findByIdAndUpdate(
         req.user._id,
@@ -482,7 +492,7 @@ const getWatchHistory = asyncHandler(async(req, res) => {
 
 
 export {
-    registerUser,
+   
     loginUser,
     logoutUser,
     refreshAccessToken,
@@ -492,5 +502,6 @@ export {
     updateUserAvatar,
     updateUserCoverImage,
     getUserChannelProfile,
-    getWatchHistory
+    getWatchHistory,
+    getAllUsers
 }

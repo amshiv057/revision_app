@@ -1,47 +1,69 @@
 import mongoose, {isValidObjectId} from "mongoose"
-import {Video} from "../models/video.model.js"
-import {User} from "../models/user.model.js"
+import {Subject} from "../models/Subject.model.js"
+ 
 import {ApiError} from "../utils/ApiError.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
 import {asyncHandler} from "../utils/asyncHandler.js"
 import {uploadOnCloudinary} from "../utils/cloudinary.js"
 
 
-const getAllVideos = asyncHandler(async (req, res) => {
-    const { page = 1, limit = 10, query, sortBy, sortType, userId } = req.query
-    //TODO: get all videos based on query, sort, pagination
-})
+const getAllSubjects = asyncHandler(async (req, res) => {
+  const authorId = req.params.authorId;
 
-const publishAVideo = asyncHandler(async (req, res) => {
-    const { title, description} = req.body
-    // TODO: get video, upload to cloudinary, create video
-})
+  try {
+    const subjects = await Subject.find({ author: authorId });
+    
+    if (!subjects || subjects.length === 0) {
+      return res.status(404).json({ message: 'No subjects found for this author' });
+    }
 
-const getVideoById = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
-    //TODO: get video by id
-})
+    res.status(200).json(subjects);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
 
-const updateVideo = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
-    //TODO: update video details like title, description, thumbnail
 
-})
+const publishASubject = asyncHandler(async (req, res) => {
+  const { name, rank, author } = req.body;
 
-const deleteVideo = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
-    //TODO: delete video
-})
+  if (!name || !rank || !author) {
+    return res.status(400).json({ message: 'Please provide name, rank, and author' });
+  }
 
-const togglePublishStatus = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
-})
+  try {
+    const newSubject = await Subject.create({ name, rank, author });
+    res.status(201).json(newSubject);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to publish subject', error: error.message });
+  }
+});
+
+// const getSubjectById = asyncHandler(async (req, res) => {
+//     const { SubjectId } = req.params
+//     //TODO: get Subject by id
+// })
+
+// const updateSubject = asyncHandler(async (req, res) => {
+//     const { SubjectId } = req.params
+//     //TODO: update Subject details like title, description, thumbnail
+
+// })
+
+// const deleteSubject = asyncHandler(async (req, res) => {
+//     const { SubjectId } = req.params
+//     //TODO: delete Subject
+// })
+
+// const togglePublishStatus = asyncHandler(async (req, res) => {
+//     const { SubjectId } = req.params
+// })
 
 export {
-    getAllVideos,
-    publishAVideo,
-    getVideoById,
-    updateVideo,
-    deleteVideo,
-    togglePublishStatus
+    getAllSubjects,
+    publishASubject,
+    // getSubjectById,
+    // updateSubject,
+    // deleteSubject,
+    // togglePublishStatus
 }

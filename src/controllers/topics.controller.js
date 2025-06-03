@@ -1,5 +1,5 @@
 import mongoose, {isValidObjectId} from "mongoose"
-import {Video} from "../models/video.model.js"
+import {Topic} from "../models/Topic.model.js"
 import {User} from "../models/user.model.js"
 import {ApiError} from "../utils/ApiError.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
@@ -7,41 +7,41 @@ import {asyncHandler} from "../utils/asyncHandler.js"
 import {uploadOnCloudinary} from "../utils/cloudinary.js"
 
 
-const getAllVideos = asyncHandler(async (req, res) => {
+const getAllTopics = asyncHandler(async (req, res) => {
     const { page = 1, limit = 10, query, sortBy, sortType, userId } = req.query
-    //TODO: get all videos based on query, sort, pagination
+    //TODO: get all Topics based on query, sort, pagination
 })
 
-const publishAVideo = asyncHandler(async (req, res) => {
+const publishATopic = asyncHandler(async (req, res) => {
     const { title, description} = req.body
-    // TODO: get video, upload to cloudinary, create video
+    // TODO: get Topic, upload to cloudinary, create Topic
 })
 
-const getVideoById = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
-    //TODO: get video by id
+const getTopicById = asyncHandler(async (req, res) => {
+    const { TopicId } = req.params
+    //TODO: get Topic by id
 })
 
-const updateVideo = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
-    //TODO: update video details like title, description, thumbnail
+const updateTopic = asyncHandler(async (req, res) => {
+    const { TopicId } = req.params
+    //TODO: update Topic details like title, description, thumbnail
 
 })
 
-const deleteVideo = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
-    //TODO: delete video
+const deleteTopic = asyncHandler(async (req, res) => {
+    const { TopicId } = req.params
+    //TODO: delete Topic
 })
 
 const togglePublishStatus = asyncHandler(async (req, res) => {
-    const { videoId } = req.params
+    const { TopicId } = req.params
 })
 
 export {
-    getAllVideos,
-    publishAVideo,
-    getVideoById,
-    updateVideo,
-    deleteVideo,
+    getAllTopics,
+    publishATopic,
+    getTopicById,
+    updateTopic,
+    deleteTopic,
     togglePublishStatus
 }

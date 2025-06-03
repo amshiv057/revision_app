@@ -1,0 +1,133 @@
+3. Controller to Handle Query Parameters
+Goal: Return query string data.
+
+Task:
+
+js
+Copy
+Edit
+// GET /search?keyword=node
+// Response: { searchTerm: "node" }
+4. Controller to Handle POST Data
+Goal: Accept and return JSON data from the request body.
+
+Task:
+ 
+js
+Copy
+Edit
+// POST /submit
+// Body: { name: "John" }
+// Response: { received: "John" }
+🟡 Moderate-Level Tasks
+5. Add Input Validation
+Goal: Validate request data using a simple condition or middleware.
+
+Task:
+
+js
+Copy
+Edit
+// POST /register
+// Reject if 'email' is missing
+6. Simulate a Database Read
+Goal: Return user data from a mock database (array).
+
+Task:
+
+js
+Copy
+Edit
+// GET /users/:id
+// Search from array of users
+7. Simulate a Database Create
+Goal: Add a user to a mock array and return the new user.
+
+Task:
+
+js
+Copy
+Edit
+// POST /users
+// Add to array and return user with new ID
+8. Controller to Update Data
+Goal: Modify an existing user's data.
+
+Task:
+
+js
+Copy
+Edit
+// PUT /users/:id
+// Update name/email of a user in mock array
+9. Controller to Delete Data
+Goal: Remove a user from a mock array.
+
+Task:
+
+js
+Copy
+Edit
+// DELETE /users/:id
+// Remove user if exists
+10. Controller Using Middleware for Authentication
+Goal: Use a middleware to check if a request has a token.
+
+Task:
+
+js
+Copy
+Edit
+// GET /profile
+// Middleware checks req.headers.authorization
+🟠 Advanced Moderate Tasks
+11. Use Async/Await with Fake DB
+Goal: Simulate async controller using setTimeout or Promise.
+
+Task:
+
+js
+Copy
+Edit
+// GET /async-user/:id
+// Simulate DB call with delay
+12. Separate Routes and Controllers
+Goal: Modularize controllers and routes.
+
+Task:
+
+Create userController.js
+
+Create userRoutes.js
+
+Import both into app.js
+
+13. Handle Errors Gracefully
+Goal: Use try-catch in async controller.
+
+Task:
+
+js
+Copy
+Edit
+// GET /user/:id
+// throw Error if not found
+14. Paginate Results
+Goal: Add pagination support using query params.
+
+Task:
+
+js
+Copy
+Edit
+// GET /posts?page=1&limit=10
+// Return 10 posts per page
+15. Return Status Codes
+Goal: Return proper HTTP status codes.
+
+Task:
+
+js
+Copy
+Edit
+// 200 OK, 400 Bad Request, 404 Not Found
