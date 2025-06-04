@@ -9,9 +9,9 @@ const topicSchema = new mongoose.Schema({
             type: Number,
             required:true
         },
-        subject:{
+        chapter:{
             type: mongoose.Schema.Types.ObjectId,
-            ref:'Subject'
+            ref:'Chapter'
         }
 },{timestamps:true});
 

@@ -19,9 +19,9 @@ app.use(cookieParser())
 import userRouter from './routes/user.routes.js'
 // import healthcheckRouter from "./routes/healthcheck.routes.js"
 import subjectRouter from "./routes/subject.routes.js"
-// import subscriptionRouter from "./routes/subscription.routes.js"
-// import videoRouter from "./routes/video.routes.js"
-// import commentRouter from "./routes/comment.routes.js"
+import chapterRouter from "./routes/chapter.routes.js"
+import topicRouter from "./routes/topics.routes.js"
+import questionRouter from "./routes/question.routes.js"
 // import likeRouter from "./routes/like.routes.js"
 // import playlistRouter from "./routes/playlist.routes.js"
 // import dashboardRouter from "./routes/dashboard.routes.js"
@@ -30,9 +30,9 @@ import subjectRouter from "./routes/subject.routes.js"
 // app.use("/api/v1/healthcheck", healthcheckRouter)
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/subjects", subjectRouter)
-// app.use("/api/v1/subscriptions", subscriptionRouter)
-// app.use("/api/v1/videos", videoRouter)
-// app.use("/api/v1/comments", commentRouter)
+app.use("/api/v1/chapters", chapterRouter)
+app.use("/api/v1/topics", topicRouter)
+app.use("/api/v1/questions", questionRouter)
 // app.use("/api/v1/likes", likeRouter)
 // app.use("/api/v1/playlist", playlistRouter)
 // app.use("/api/v1/dashboard", dashboardRouter)

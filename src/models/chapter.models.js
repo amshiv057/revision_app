@@ -13,6 +13,7 @@ const chapterSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:'Subject'
     }
+    
 },{timestamps:true});
 
  

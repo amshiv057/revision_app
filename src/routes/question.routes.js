@@ -1,18 +1,20 @@
-import { Router } from 'express';
+import { Router } from "express";
+import { verifyJWT } from "../middleware/auth.middleware.js";
 import {
-    getLikedVideos,
-    toggleCommentLike,
-    toggleVideoLike,
-    toggleTweetLike,
-} from "../controllers/like.controller.js"
-import {verifyJWT} from "../middlewares/auth.middleware.js"
+  deleteQuestion,
+  getAllQuestions,
+  getQuestionById,
+  publishAQuestion,
+  updateQuestion,
+} from "../controllers/questions.controller.js";
 
 const router = Router();
-router.use(verifyJWT); // Apply verifyJWT middleware to all routes in this file
+router.use(verifyJWT);
 
-router.route("/toggle/v/:videoId").post(toggleVideoLike);
-router.route("/toggle/c/:commentId").post(toggleCommentLike);
-router.route("/toggle/t/:tweetId").post(toggleTweetLike);
-router.route("/videos").get(getLikedVideos);
+router.route("/publish").post(publishAQuestion);
+router.route("/:topicId").get(getAllQuestions);
+router.route("/question/:questionId").get(getQuestionById);
+router.route("/question/:questionId").patch(updateQuestion);
+router.route("/question/:questionId").delete(deleteQuestion);
 
-export default router
+export default router;
