@@ -1,4 +1,4 @@
-import {asyncHandler} from "../utils/asyncHandler.js"
+import {asyncHandler} from "../utils/asynchandler.js"
 import { Question } from "../models/questions.model.js";
 
 // GET /questions — list with pagination, filter, sort
